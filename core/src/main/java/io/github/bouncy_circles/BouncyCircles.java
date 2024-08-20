@@ -13,7 +13,7 @@ public class BouncyCircles extends ApplicationAdapter {
     @Override
     public void create() {
         shape = new ShapeRenderer();
-        ball = new Ball(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 10, 0, 0);
+        ball = new Ball(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 10, 2, 2);
         paddle = new Paddle(60, 10);
     }
 

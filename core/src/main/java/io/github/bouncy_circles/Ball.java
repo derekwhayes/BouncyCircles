@@ -38,7 +38,7 @@ public class Ball {
 
     public void checkCollision(Paddle paddle) {
         if(collidesWith(paddle)) {
-            color = Color.GREEN;
+            ySpeed = -ySpeed;
         }
         else {
             color = Color.WHITE;
@@ -46,8 +46,20 @@ public class Ball {
     }
 
     private boolean collidesWith(Paddle paddle) {
+        int paddleStart = Gdx.input.getX();
+        int paddleEnd = Gdx.input.getX() + paddle.x;
+        int paddleTop = paddle.y * 2;
+        //System.out.println("paddleTop: " + paddleTop);
+        int paddleBottom = paddle.y;
+        //System.out.println("paddleBottom: " + paddleBottom);
 
+        int ballStart = x - size;
+        int ballEnd = x + size;
+        int ballTop = y + size;
+        //System.out.println("ballTop: " + ballTop);
+        int ballBottom = y - size;
+        //System.out.println("ballBottom: " + ballBottom);
 
-        return Math.random() > .5;
+        return (ballEnd >= paddleStart && ballStart <= paddleEnd) && (ballBottom <= paddleTop && ballTop >= paddleBottom);
     }
 }
