@@ -37,11 +37,13 @@ public class Ball {
     }
 
     public void checkCollision(Paddle paddle) {
-        if(collidesWith(paddle)) {
+        if(collidesWith(paddle)) ySpeed = -ySpeed;
+    }
+
+    public void checkCollision(Block block) {
+        if(collidesWith(block)) {
             ySpeed = -ySpeed;
-        }
-        else {
-            color = Color.WHITE;
+            block.destroyed = true;
         }
     }
 
@@ -49,17 +51,27 @@ public class Ball {
         int paddleStart = Gdx.input.getX();
         int paddleEnd = Gdx.input.getX() + paddle.x;
         int paddleTop = paddle.y * 2;
-        //System.out.println("paddleTop: " + paddleTop);
         int paddleBottom = paddle.y;
-        //System.out.println("paddleBottom: " + paddleBottom);
 
         int ballStart = x - size;
         int ballEnd = x + size;
         int ballTop = y + size;
-        //System.out.println("ballTop: " + ballTop);
         int ballBottom = y - size;
-        //System.out.println("ballBottom: " + ballBottom);
 
         return (ballEnd >= paddleStart && ballStart <= paddleEnd) && (ballBottom <= paddleTop && ballTop >= paddleBottom);
+    }
+
+    private boolean collidesWith(Block block) {
+        int blockStart = block.x;
+        int blockEnd = block.x + block.width;
+        int blockTop = block.y + block.height;
+        int blockBottom = block.y;
+
+        int ballStart = x - size;
+        int ballEnd = x + size;
+        int ballTop = y + size;
+        int ballBottom = y - size;
+
+        return (ballEnd >= blockStart && ballStart <= blockEnd) && (ballBottom <= blockTop && ballTop >= blockBottom);
     }
 }

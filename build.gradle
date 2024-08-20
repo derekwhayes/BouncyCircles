@@ -21,7 +21,7 @@ allprojects {
   // This allows you to "Build and run using IntelliJ IDEA", an option in IDEA's Settings.
   idea {
     module {
-      outputDir file('build/classes/java/main')
+      outputDir file('build/classes/java/majava in')
       testOutputDir file('build/classes/java/test')
     }
   }
@@ -54,7 +54,7 @@ configure(subprojects - project(':android')) {
 
 subprojects {
   version = '$projectVersion'
-  ext.appName = 'BounceyCircles'
+  ext.appName = 'BouncyCircles'
   repositories {
     mavenCentral()
     maven { url 'https://s01.oss.sonatype.org' }
@@ -66,4 +66,4 @@ subprojects {
   }
 }
 
-eclipse.project.name = 'BounceyCircles' + '-parent'
+eclipse.project.name = 'BouncyCircles' + '-parent'

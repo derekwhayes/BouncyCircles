@@ -12,10 +12,6 @@ public class Paddle {
         this.y = y;
     }
 
-    public void update() {
-
-    }
-
     public void draw(ShapeRenderer shape) {
         shape.rect(Gdx.input.getX(), y, x, y);
     }
